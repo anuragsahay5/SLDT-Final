@@ -109,17 +109,3 @@ while True:
         cv2.imshow("ROI", roi)
 cap.release()
 cv2.destroyAllWindows()
-
-
-# # Example usage: provide the path to an image
-# image_path = 'Pictures/1.jpg'
-# sz=128
-# preprocessed_image = preprocess_image(image_path)
-
-# # Make predictions
-# predictions = loaded_model.predict(preprocessed_image)
-
-# # Get the class with the highest probability
-# predicted_class = np.argmax(predictions)
-
-# print(f"Predicted Class: {predicted_class}")
