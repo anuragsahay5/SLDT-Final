@@ -42,43 +42,20 @@ while True:
     cv2.rectangle(frame, (220-1, 9), (620+1, 419), (255,0,0) ,1)
     # Extracting the ROI
     roi = frame[10:410, 220:520]
-#    roi = cv2.resize(roi, (64, 64))
     
     cv2.imshow("Frame", frame)
     gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
     
     blur = cv2.GaussianBlur(gray,(5,5),2)
-    # #blur = cv2.bilateralFilter(roi,9,75,75)
     
     th3 = cv2.adaptiveThreshold(blur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,11,2)
     ret, test_image = cv2.threshold(th3, minValue, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
-    #time.sleep(5)
-    #cv2.imwrite("/home/rc/Downloads/soe/im1.jpg", roi)
-    #test_image = func("/home/rc/Downloads/soe/im1.jpg")
-
 
     
     test_image = cv2.resize(test_image, (300,300))
     cv2.imshow("test", test_image)
-        
-    #_, mask = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)
-    #kernel = np.ones((1, 1), np.uint8)
-    #img = cv2.dilate(mask, kernel, iterations=1)
-    #img = cv2.erode(mask, kernel, iterations=1)
-    # do the processing after capturing the image!
-#    roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-#    _, roi = cv2.threshold(roi, 120, 255, cv2.THRESH_BINARY)
+
     
-    ##gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-    ##cv2.imshow("GrayScale", gray)
-    ##blur = cv2.GaussianBlur(gray,(5,5),2)
-    
-    #blur = cv2.bilateralFilter(roi,9,75,75)
-    
-    ##th3 = cv2.adaptiveThreshold(frame,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,11,2)
-    ##ret, res = cv2.threshold(th3, minValue, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
-    # cv2.imshow("ROI", roi)
-    #roi = frame
     interrupt = cv2.waitKey(10)
     if interrupt & 0xFF == 27: # esc key
         break
